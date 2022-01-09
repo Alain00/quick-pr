@@ -72,6 +72,20 @@ function gh_guess_pr_label() {
   echo ''
 }
 
-function ghpr() {
+# TODO: Implement update suggestion
+# function update() {
+#   cd $QPR_INSTALL_FOLDER > /dev/null
+#   git fetch
+#   UPSTREAM=${1:-'@{u}'}
+#   LOCAL=$(git rev-parse @)
+#   REMOTE=$(git rev-parse "$UPSTREAM")
+  
+#   if [ $LOCAL != $REMOTE ]; then
+#     git pull
+#   fi
+#   cd - > /dev/null
+# }
+
+function qpr() {
   command gh pr create --base=`gh_guess_base_branch` -a=@me --fill --label=`gh_guess_pr_label` $1
 }
