@@ -72,4 +72,6 @@ function gh_guess_pr_label() {
   echo ''
 }
 
-alias ghpr="gh pr create --base=`gh_guess_base_branch` -a=@me --fill --label=`gh_guess_pr_label`"
+function ghpr() {
+  command gh pr create --base=`gh_guess_base_branch` -a=@me --fill --label=`gh_guess_pr_label` $1
+}
