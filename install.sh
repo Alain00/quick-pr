@@ -1,4 +1,4 @@
-REPO_FOLDER=~/.sh-quick-pr
+REPO_FOLDER=$HOME/.sh-quick-pr
 SCRIPT_FILE=$REPO_FOLDER/sh-quick-pr.sh
 
 if [ ! -d $REPO_FOLDER ]; then
@@ -8,7 +8,7 @@ else
 fi
 
 INSTALL_LINE="source ${SCRIPT_FILE}"
-BASH_CONFIG=~/.bashrc
+BASH_CONFIG=$HOME/.bashrc
 
 if grep -q "${INSTALL_LINE}" $BASH_CONFIG; then
   echo "🎉 quick PR is already installed in $BASH_CONFIG"
@@ -19,3 +19,4 @@ else
 fi
 
 
+. $BASH_CONFIG
