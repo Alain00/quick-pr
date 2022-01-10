@@ -1,4 +1,4 @@
-function gh_guess_base_branch() {
+function _gh_guess_base_branch() {
   command git rev-parse --git-dir &>/dev/null || return
   local current=`command git symbolic-ref --short HEAD`
   local develop
@@ -46,10 +46,19 @@ function gh_guess_base_branch() {
     return
   fi
 
+  if [[ $develop == "" ]]; then
+    if [[ $staging == "" ]]; then
+      echo $master
+    else
+      echo $staging
+    fi
+    return
+  fi
+
   echo $develop
 }
 
-function gh_get_label_by_short() {
+function _gh_get_label_by_short() {
   local short=$1
   case $short in
     'feat') echo 'enhancement';;
@@ -64,7 +73,7 @@ function gh_guess_pr_label() {
   local current=`command git symbolic-ref --short HEAD`
   for short in feat fix doc; do
     if [[ $current == $short* ]]; then
-      echo `gh_get_label_by_short $short`
+      echo `_gh_get_label_by_short $short`
       return
     fi
   done
@@ -87,5 +96,5 @@ function gh_guess_pr_label() {
 # }
 
 function qpr() {
-  command gh pr create --base=`gh_guess_base_branch` -a=@me --fill --label=`gh_guess_pr_label` $1
+  command gh pr create --base=`_gh_guess_base_branch` -a=@me --fill --label=`gh_guess_pr_label` $1
 }

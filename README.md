@@ -1,4 +1,4 @@
-# sh-quick-pr
+# quick-pr
 Make PRs fast and out of worries, just remember to assing reviewers if needed
 
 ## Install
@@ -45,6 +45,14 @@ qpr
     <tr>
       <td>*</td>
       <td>develop</td>
+    </tr>
+    <tr>
+      <td>*</td>
+      <td>staging</td>
+    </tr>
+    <tr>
+      <td>*</td>
+      <td>(master, main)</td>
     </tr>
   </tbody>
 </table>
