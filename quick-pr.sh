@@ -5,7 +5,7 @@ function _gh_guess_base_branch() {
   local staging
   local master
 
-  for branch in dev develop devel; do
+  for branch in dev develop development devel; do
     if command git show-ref -q --verify refs/heads/$branch; then
       develop=$branch
       break
